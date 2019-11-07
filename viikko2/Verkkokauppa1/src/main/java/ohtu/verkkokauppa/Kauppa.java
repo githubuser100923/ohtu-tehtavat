@@ -8,13 +8,13 @@ public class Kauppa {
     private ViitegeneraattoriInterface viitegeneraattori;
     private String kaupanTili;
 
-    public Kauppa(PankkiInterface pankki, 
-    ViitegeneraattoriInterface viitegeneraattori,
-    VarastoInterface varasto) {
-        varasto = varasto;
-        pankki = pankki;
-        viitegeneraattori = viitegeneraattori;
-        kaupanTili = "33333-44455";
+    public Kauppa(VarastoInterface varasto,
+    PankkiInterface pankki, 
+    ViitegeneraattoriInterface viitegeneraattori) {
+        this.varasto = varasto;
+        this.pankki = pankki;
+        this.viitegeneraattori = viitegeneraattori;
+        this.kaupanTili = "33333-44455";
     }
 
     public void aloitaAsiointi() {
@@ -27,8 +27,8 @@ public class Kauppa {
     }
 
     public void lisaaKoriin(int id) {
-        if (varasto.saldo(id)>0) {
-            Tuote t = varasto.haeTuote(id);             
+        if (this.varasto.saldo(id)>0) {
+            Tuote t = varasto.haeTuote(id);       
             ostoskori.lisaa(t);
             varasto.otaVarastosta(t);
         }
