@@ -46,14 +46,14 @@ public class KassapaateTest {
         when(kortti.getSaldo()).thenReturn(10);
         kassa.lataa(kortti,10);
         
-        verify(kortti, times(0)).getSaldo();
+        verify(kortti).lataa(10);
     }
 
     @Test
     public void lataaNegatiivinenSumma(){
         when(kortti.getSaldo()).thenReturn(10);
-        kassa.lataa(kortti,10);
+        kassa.lataa(kortti,-5);
         
-        verify(kortti, times(0)).getSaldo();
+        verify(kortti, times(0)).lataa(-5);
     } 
 }
